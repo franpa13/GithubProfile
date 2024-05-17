@@ -1,22 +1,27 @@
 
 import { create } from 'zustand'
 
-// Definir el store con Zustand
+
 const useStore = create((set) => ({
-    user: localStorage.getItem("user") || "", // Inicializa el valor del input desde el localStorage o lo deja en blanco si no hay nada
+    user: localStorage.getItem("user") || "", 
     setUser: (newValue) => {
-        set({ user: newValue }); // Actualiza el estado con el nuevo valor
-        localStorage.setItem("user", newValue); // Guarda el nuevo valor en el localStorage
+        set({ user: newValue }); 
+        localStorage.setItem("user", newValue); 
     },
-    data: JSON.parse(localStorage.getItem("data")) || "", // Inicializa 'data' desde el localStorage o lo deja en blanco si no hay nada
+    data: JSON.parse(localStorage.getItem("data")) || "", 
     setData: (data) => {
-        set({ data }); // Actualiza el estado con los datos obtenidos
-        localStorage.setItem("data", JSON.stringify(data)); // Guarda los datos en el localStorage
+        set({ data });
+        localStorage.setItem("data", JSON.stringify(data)); 
     },
-    repo: JSON.parse(localStorage.getItem("repo")) || "", // Inicializa 'data' desde el localStorage o lo deja en blanco si no hay nada
+    repo: JSON.parse(localStorage.getItem("repo")) || "", 
     setRepo: (repo) => {
-        set({ repo }); // Actualiza el estado con los datos obtenidos
-        localStorage.setItem("repo", JSON.stringify(repo)); // Guarda los datos en el localStorage
+        set({ repo }); 
+        localStorage.setItem("repo", JSON.stringify(repo)); 
+    },
+    languages: JSON.parse(localStorage.getItem("languages")) || "", 
+    setLanguages: (languages) => {
+        set({ languages }); 
+        localStorage.setItem("languages", JSON.stringify(languages)); 
     },
 }));
 
