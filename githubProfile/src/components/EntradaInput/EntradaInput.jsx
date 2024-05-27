@@ -21,7 +21,6 @@ export default function EntradaInput() {
     debouncedSearch(value);
   };
 
-
   const debouncedSearch = debounce(async (username) => {
     if (username) {
       try {
@@ -49,8 +48,10 @@ export default function EntradaInput() {
       findUser(user);
       traerRepos(user);
     } else {
-      findUser("github");
-      traerRepos("github");
+      if (user =="" || user == undefined) {
+        findUser("github");
+        traerRepos("github");
+      }
     }
   };
 
@@ -64,20 +65,26 @@ export default function EntradaInput() {
 
       <form onSubmit={handleForm}>
         <Autocomplete
-        
           freeSolo
           options={searchResults}
           getOptionLabel={(option) => option.login}
           onInputChange={handleChange}
           renderOption={(props, option) => (
-            <li {...props} style={{ display: 'flex', alignItems: 'center' ,fontWeight:"bold"}}>
+            <li
+              {...props}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                fontWeight: "bold",
+              }}
+            >
               <img
                 src={option.avatar_url}
                 alt={option.login}
                 style={{
                   width: 30,
                   height: 30,
-                  borderRadius: '50%',
+                  borderRadius: "50%",
                   marginRight: 10,
                 }}
               />
