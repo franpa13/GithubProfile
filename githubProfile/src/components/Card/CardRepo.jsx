@@ -12,6 +12,7 @@ export default function CardRepo({ repo }) {
   // }, [nameUser, nameRepo]);
 
   // console.log(languages);
+  console.log(repo);
   useEffect(() => {
     if (repo && repo.updated_at) {
       const updatedAtDate = new Date(repo.updated_at);
@@ -25,10 +26,10 @@ export default function CardRepo({ repo }) {
     }
   }, [repo]);
   return (
-    <div className="w-full m-1 flex flex-col gap-2 bg-gradient-to-r from-gray-900  to-blue-950 p-4 rounded-lg">
-      <h3 className="text-white text-xl">{repo && repo.name}</h3>
-      <h2 className="text-gray-400 text-xs">{repo && repo.description}</h2>
-      <div className="mt-2 flex justify-between flex-wrap  items-center">
+    <a target="_blank" href={repo.html_url}  className="w-full m-1 flex flex-col gap-2 bg-gradient-to-r from-gray-900 md:m-0 to-blue-950 p-4 rounded-lg md:p-4 md:w-1/3 md:mb-3">
+      <h3 className="text-white text-xl md:text-2xl">{repo && repo.name}</h3>
+      <h2 className="text-gray-400 text-xs md:text-xl">{repo && repo.description}</h2>
+      <div className="mt-2 flex justify-between flex-wrap  items-center md:justify-start md:gap-3">
         {repo && repo.license && (
           <div className="flex gap-4 items-center">
             <img src="./Chield_alt.svg" alt="" />
@@ -46,6 +47,6 @@ export default function CardRepo({ repo }) {
           Updated at {daysSinceUpdate} days ago
         </span>
       </div>
-    </div>
+    </a>
   );
 }

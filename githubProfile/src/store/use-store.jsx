@@ -8,6 +8,10 @@ const useStore = create((set) => ({
         set({ user: newValue }); 
         localStorage.setItem("user", newValue); 
     },
+
+    searchResults: [],
+    setSearchResults: (results) => set({ searchResults: results }),
+
     data: JSON.parse(localStorage.getItem("data")) || "", 
     setData: (data) => {
         set({ data });
